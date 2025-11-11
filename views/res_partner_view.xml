@@ -3,23 +3,27 @@
         <record id="view_partner_iibb_sircar_misiones_form" model="ir.ui.view">
             <field name="name">res.partner.form</field>
             <field name="model">res.partner</field>
-            <field name="inherit_id" ref="l10n_ar_withholding.view_partner_property_form"/>
+            <!-- Use the partner property form defined in l10n_ar_partner which provides the 'fiscal_data' page -->
+            <field name="inherit_id" ref="l10n_ar_partner.view_partner_property_form"/>
             <field name="arch" type="xml">
 
-                <page name="fiscal_data" position="inside">
-                    <h3 style="text-align: center;">Retenciones IIBB SIRCAR Misiones</h3>
-                    <group>
-                        <field name="alicuota_ret_misiones_3" />
-                        <field name="alicuota_ret_misiones_1" />
-                        <field name="alicuota_ret_misiones" />
-                    </group>
-                    <h3 style="text-align: center;">Percepciones IIBB SIRCAR Misiones</h3>
-                    <group>
-                        <field name="alicuota_per_misiones_3" />
-                        <field name="alicuota_per_misiones_1" />
-                        <field name="alicuota_per_misiones" />
-                    </group>
-                </page>
+                <!-- Insert a new page after the existing 'fiscal_data' page using xpath -->
+                <xpath expr="//page[@name='fiscal_data']" position="after">
+                    <page name="fiscal_data_sircar" string="Ret./Perc. IIBB SIRCAR Misiones">
+                        <group>
+                            <group>
+                                <field name="alicuota_ret_misiones_3"/>
+                                <field name="alicuota_ret_misiones_1"/>
+                                <field name="alicuota_ret_misiones"/>
+                            </group>
+                            <group>
+                                <field name="alicuota_per_misiones_3"/>
+                                <field name="alicuota_per_misiones_1"/>
+                                <field name="alicuota_per_misiones"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
 
             </field>
     </record>
