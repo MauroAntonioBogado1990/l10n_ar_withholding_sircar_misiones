@@ -24,8 +24,11 @@ class AccountPaymentGroupInherit(models.Model):
 
                 amount_untaxed_total_invs += rec.withholdable_advanced_amount
                 _amount_ret_iibb = amount_untaxed_total_invs * (retencion / 100)
+                # _payment_method = self.env.ref(
+                #     'l10n_ar_withholding.'
+                #     'account_payment_method_out_withholding')
                 _payment_method = self.env.ref(
-                    'l10n_ar_withholding.'
+                    'l10n_ar_withholding_automatic.'
                     'account_payment_method_out_withholding')
                 _journal = self.env['account.journal'].search([
                     ('company_id', '=', rec.company_id.id),
