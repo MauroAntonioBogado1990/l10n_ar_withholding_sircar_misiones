@@ -4,6 +4,7 @@
             <field name="name">res.partner.form</field>
             <field name="model">res.partner</field>
             <!-- Use the partner property form defined in l10n_ar_partner which provides the 'fiscal_data' page -->
+            <!--<field name="inherit_id" ref="l10n_ar_withholding.view_partner_property_form"/>-->    
             <field name="inherit_id" ref="l10n_ar_partner.view_partner_property_form"/>
             <field name="arch" type="xml">
 
