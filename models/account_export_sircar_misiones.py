@@ -100,7 +100,10 @@ class AccountExportSircarMisiones(models.Model):
         string_txt = ''
         num_renglon = 1
         for invoice in invoices:
-            taxes = invoice.tax_totals['groups_by_subtotal']['Base imponible']
+            #taxes = invoice.tax_totals['groups_by_subtotal']['Base imponible']
+            groups = invoice.tax_totals.get('groups_by_subtotal', {})
+            taxes = groups.get('Importe libre de impuestos') or groups.get('Base imponible') or []
+                                             
             for tax in taxes:
                 if tax['tax_group_name'] == 'Perc IIBB Misiones':
                     if invoice.currency_id.name != 'ARS':
